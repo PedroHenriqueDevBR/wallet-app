@@ -5,4 +5,10 @@
     background: #F2F3F7;
     width: 100vw;
     height: 100vh;
+    display: flex;
+}
+
+main {
+    width: 100%;
+    padding: 30px;
 }
