@@ -12,3 +12,11 @@ main {
     width: 100%;
     padding: 30px;
 }
+
+.sizedbox-34 {
+    height: 34px;
+}
+
+.sizedbox-24 {
+    height: 24px;
+}
