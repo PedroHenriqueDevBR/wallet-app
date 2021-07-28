@@ -7,6 +7,8 @@
 
 ## Features
 
+ - [ ] Implement database (TypeORM)
+ - [ ] Insert fake data in database
  - [ ] get all quick transfers
  - [ ] get all credit cards
  - [ ] get last transections
