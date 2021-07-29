@@ -20,3 +20,21 @@ main {
 .sizedbox-24 {
     height: 24px;
 }
+
+.sizedbox-h-24 {
+    width: 24px;
+}
+
+#middle-data {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.width-60 {
+    width: 60%;
+}
+
+.width-40 {
+    width: 40%;
+}

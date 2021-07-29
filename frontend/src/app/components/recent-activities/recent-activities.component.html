@@ -1,1 +1,27 @@
-<p>recent-activities works!</p>
+<div id="container">
+    <div class="header">
+        <p>Recent activities</p>
+        <div class="options">
+            <div class="datainfo">
+                <div class="item">
+                    <div class="item-color-green"></div>
+                    Income
+                </div>
+                <div class="vertical-divider"></div>
+                <div class="item">
+                    <div class="item-color-red"></div>
+                    Expense
+                </div>
+            </div>
+            <div class="period-selector">
+                <select>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="chartContainer">
+        <canvas #chartID></canvas>
+    </div>
+</div>
