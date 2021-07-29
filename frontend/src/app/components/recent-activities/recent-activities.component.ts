@@ -29,7 +29,8 @@ export class RecentActivitiesComponent implements OnInit {
           {
             data: [1200, 1000, 1450, 2000, 3202, 2003, 3751, 1045, 2219, 2985, 4102, 654],
             borderColor: '#FF7426',
-            fill: false,
+            fill: true,
+            backgroundColor: 'rgba(254, 115, 37, 0.1)',
           },
         ],
       },
