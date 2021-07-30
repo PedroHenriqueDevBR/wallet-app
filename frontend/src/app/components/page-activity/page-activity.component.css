@@ -1,5 +1,5 @@
 #container {
-    width: 100%;
+    width: calc(100% - 120px);
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

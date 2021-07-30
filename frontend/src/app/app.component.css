@@ -6,6 +6,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    overflow: hidden;
 }
 
 main {
@@ -26,9 +27,10 @@ main {
 }
 
 #middle-data {
-    width: 100%;
+    width: calc(100% - 120px);
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
 }
 
 .width-60 {
