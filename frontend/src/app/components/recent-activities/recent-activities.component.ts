@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { ActivityModel } from 'src/app/models/activity.model';
-import { RegisterModel } from 'src/app/models/register.model';
 
 @Component({
   selector: 'app-recent-activities',
@@ -9,31 +8,43 @@ import { RegisterModel } from 'src/app/models/register.model';
   styleUrls: ['./recent-activities.component.css']
 })
 export class RecentActivitiesComponent implements OnInit {
-  @ViewChild("chartID", { static: true }) element: any;
-  @ViewChild("chartID", { static: true }) chartElement: ElementRef;
+  @ViewChild("chartID", { static: true }) chartElement!: ElementRef;
   activity: ActivityModel = new ActivityModel([], [], true);
   monthData: ActivityModel = this.activity.getDataFromMonths();
   yearData: ActivityModel = this.activity.getDataFromYears();
-  
+
+  chart: Chart | undefined;
   currentLabels: Array<string> = this.activity.getMonthLabels(this.monthData.income);
   currentIncome: Array<number> = this.activity.extractValueFromRegisterValue(this.monthData.income);
   currentExpense: Array<number> = this.activity.extractValueFromRegisterValue(this.monthData.expense);
 
   constructor() {
     Chart.register(...registerables);
-    this.chartElement = this.element;
   }
 
   ngOnInit(): void {
+    
     this.createChart();
   }
 
-  changePeriod(value: number): void {
-
+  changePeriod(event:any): void {
+    const value: number = event.value;
+    if (value == 0)  {
+      this.currentLabels = this.activity.getMonthLabels(this.monthData.income);
+      this.currentIncome = this.activity.extractValueFromRegisterValue(this.monthData.income);
+      this.currentExpense = this.activity.extractValueFromRegisterValue(this.monthData.expense);
+      this.createChart();
+      return;
+    }
+    this.currentLabels = this.activity.getYearLabels(this.yearData.income);
+    this.currentIncome = this.activity.extractValueFromRegisterValue(this.yearData.income);
+    this.currentExpense = this.activity.extractValueFromRegisterValue(this.yearData.expense);
+    this.createChart();
   }
 
   createChart(): void {
-    new Chart(this.chartElement.nativeElement, {
+    this.chart?.destroy();
+    this.chart = new Chart(this.chartElement.nativeElement, {
       type: 'line',
       data: {
         labels: this.currentLabels,

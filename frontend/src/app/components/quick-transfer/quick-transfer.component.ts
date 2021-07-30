@@ -13,15 +13,6 @@ export class QuickTransferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.quickTransferService.getQuickTransfers().subscribe(
-      (data) => {
-        // QuickTransferModel.fromJsonList(data as Array<any>);
-        console.log(data as Array<any>);
-      }, 
-      (error) => {
-        console.log(error);
-      }
-    );
   }
 
 }

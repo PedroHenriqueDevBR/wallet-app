@@ -14,9 +14,9 @@
                 </div>
             </div>
             <div class="period-selector">
-                <select>
-                    <option value="month">Month</option>
-                    <option value="year">Year</option>
+                <select (change)="changePeriod($event.target)">
+                    <option [value]="0">Month</option>
+                    <option [value]="1">Year</option>
                 </select>
             </div>
         </div>

@@ -7,7 +7,7 @@ export class ActivityModel {
     constructor(income: Array<RegisterModel> = [], expense: Array<RegisterModel> = [], initData: boolean = false) {
         this.income = income;
         this.expense = expense;
-        if (initData) { this.initData();}
+        if (initData) { this.initData(); }
     }
 
     getDataFromYears(): ActivityModel {
@@ -75,7 +75,7 @@ export class ActivityModel {
                     total += data.value;
                 }
             })
-            const date = new Date(`${year}-${month+1}-1`);
+            const date = new Date(`${year}-${month + 1}-1`);
             result.push(new RegisterModel(total, date));
         });
         return result;
@@ -102,6 +102,14 @@ export class ActivityModel {
         return result;
     }
 
+    getYearLabels(years: Array<RegisterModel>): Array<string> {
+        let result: Array<string> = [];
+        years.forEach(el => {
+            result.push(el.date.getFullYear().toString());
+        });
+        return result;
+    }
+
     // ================= Init fake data =================
 
     initData() {
@@ -111,6 +119,18 @@ export class ActivityModel {
 
     setIncomeData(): void {
         this.income = [
+            new RegisterModel(2000, new Date("2019-1-1")),
+            new RegisterModel(1200, new Date("2019-2-1")),
+            new RegisterModel(1400, new Date("2019-3-1")),
+            new RegisterModel(3300, new Date("2019-4-1")),
+            new RegisterModel(5100, new Date("2019-5-1")),
+            new RegisterModel(2500, new Date("2019-6-1")),
+            new RegisterModel(1000, new Date("2019-7-1")),
+            new RegisterModel(2500, new Date("2019-8-1")),
+            new RegisterModel(3400, new Date("2019-9-1")),
+            new RegisterModel(1500, new Date("2019-10-1")),
+            new RegisterModel(1450, new Date("2019-11-1")),
+            new RegisterModel(900, new Date("2019-12-1")),
             new RegisterModel(2000, new Date("2020-1-1")),
             new RegisterModel(1200, new Date("2020-2-1")),
             new RegisterModel(1400, new Date("2020-3-1")),
@@ -133,23 +153,35 @@ export class ActivityModel {
             new RegisterModel(2500, new Date("2021-8-5")),
             new RegisterModel(3400, new Date("2021-9-5")),
             new RegisterModel(1500, new Date("2021-10-5")),
-            new RegisterModel(1450, new Date("2021-11-5")),
+            new RegisterModel(2450, new Date("2021-11-5")),
             new RegisterModel(900, new Date("2021-12-5")),
         ];
     }
 
     setExpenseData(): void {
         this.expense = [
+            new RegisterModel(2150, new Date("2019-1-5")),
+            new RegisterModel(1200, new Date("2019-2-5")),
+            new RegisterModel(1400, new Date("2019-3-5")),
+            new RegisterModel(3300, new Date("2019-4-5")),
+            new RegisterModel(5100, new Date("2019-5-5")),
+            new RegisterModel(2500, new Date("2019-6-5")),
+            new RegisterModel(1000, new Date("2019-7-5")),
+            new RegisterModel(2500, new Date("2019-8-5")),
+            new RegisterModel(3400, new Date("2019-9-5")),
+            new RegisterModel(1500, new Date("2019-10-5")),
+            new RegisterModel(2450, new Date("2019-11-5")),
+            new RegisterModel(900, new Date("2019-12-5")),
             new RegisterModel(3300, new Date("2020-1-1")),
             new RegisterModel(5100, new Date("2020-2-1")),
             new RegisterModel(2500, new Date("2020-3-1")),
             new RegisterModel(1000, new Date("2020-4-1")),
             new RegisterModel(2500, new Date("2020-5-1")),
-            new RegisterModel(3400, new Date("2020-6-1")),
+            new RegisterModel(2400, new Date("2020-6-1")),
             new RegisterModel(1500, new Date("2020-7-1")),
             new RegisterModel(1450, new Date("2020-8-1")),
-            new RegisterModel(3300, new Date("2020-9-1")),
-            new RegisterModel(5100, new Date("2020-10-1")),
+            new RegisterModel(1300, new Date("2020-9-1")),
+            new RegisterModel(1100, new Date("2020-10-1")),
             new RegisterModel(2500, new Date("2020-11-1")),
             new RegisterModel(1000, new Date("2020-12-1")),
             new RegisterModel(2500, new Date("2021-1-1")),
@@ -157,7 +189,7 @@ export class ActivityModel {
             new RegisterModel(1500, new Date("2021-3-1")),
             new RegisterModel(1450, new Date("2021-4-1")),
             new RegisterModel(3300, new Date("2021-5-1")),
-            new RegisterModel(5100, new Date("2021-6-1")),
+            new RegisterModel(2500, new Date("2021-6-1")),
             new RegisterModel(2500, new Date("2021-7-1")),
             new RegisterModel(1000, new Date("2021-8-1")),
             new RegisterModel(2500, new Date("2021-9-1")),
