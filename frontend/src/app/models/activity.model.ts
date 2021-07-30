@@ -1,10 +1,13 @@
-class ActivityModel {
+import { RegisterModel } from "./register.model";
+
+export class ActivityModel {
     income: Array<RegisterModel> = [];
     expense: Array<RegisterModel> = [];
 
-    constructor(income: Array<RegisterModel> = [], expense: Array<RegisterModel> = []) {
+    constructor(income: Array<RegisterModel> = [], expense: Array<RegisterModel> = [], initData: boolean = false) {
         this.income = income;
         this.expense = expense;
+        if (initData) { this.initData();}
     }
 
     getDataFromYears(): ActivityModel {
@@ -19,7 +22,7 @@ class ActivityModel {
         let years: Array<number> = [];
         registerList.forEach(el => {
             const year: number = el.date.getFullYear();
-            if (years.find(el => el == year) == -1) {
+            if (years.findIndex(el => el == year) == -1) {
                 years.push(year);
             }
         });
@@ -52,10 +55,10 @@ class ActivityModel {
     getAllMonthsFromCurrentYear(registerList: Array<RegisterModel>, year: number): Array<number> {
         let months: Array<number> = [];
         registerList.forEach(el => {
-            const year: number = el.date.getFullYear();
-            if (year == year) {
+            const yearVerifier: number = el.date.getFullYear();
+            if (yearVerifier == year) {
                 const month: number = el.date.getMonth();
-                if (months.find(el => el == month) == -1) {
+                if (months.findIndex(el => el == month) == -1) {
                     months.push(month);
                 }
             }
@@ -72,11 +75,32 @@ class ActivityModel {
                     total += data.value;
                 }
             })
-            result.push(new RegisterModel(total, new Date(`${year}-1-1`)));
+            const date = new Date(`${year}-${month+1}-1`);
+            result.push(new RegisterModel(total, date));
         });
         return result;
     }
 
+    getMonthName(value: number): string {
+        const months: Array<string> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return months[value];
+    }
+
+    getMonthLabels(months: Array<RegisterModel>): Array<string> {
+        let result: Array<string> = [];
+        months.forEach(el => {
+            result.push(this.getMonthName(el.date.getMonth()));
+        });
+        return result;
+    }
+
+    extractValueFromRegisterValue(registers: Array<RegisterModel>): Array<number> {
+        let result: Array<number> = [];
+        registers.forEach(el => {
+            result.push(el.value);
+        });
+        return result;
+    }
 
     // ================= Init fake data =================
 
@@ -88,58 +112,58 @@ class ActivityModel {
     setIncomeData(): void {
         this.income = [
             new RegisterModel(2000, new Date("2020-1-1")),
-            new RegisterModel(2000, new Date("2020-2-1")),
-            new RegisterModel(2000, new Date("2020-3-1")),
-            new RegisterModel(2000, new Date("2020-4-1")),
-            new RegisterModel(2000, new Date("2020-5-1")),
-            new RegisterModel(2000, new Date("2020-6-1")),
-            new RegisterModel(2000, new Date("2020-7-1")),
-            new RegisterModel(2000, new Date("2020-8-1")),
-            new RegisterModel(2000, new Date("2020-9-1")),
-            new RegisterModel(2000, new Date("2020-10-1")),
-            new RegisterModel(2000, new Date("2020-11-1")),
-            new RegisterModel(2000, new Date("2020-12-1")),
-            new RegisterModel(2000, new Date("2021-1-1")),
-            new RegisterModel(2000, new Date("2021-2-1")),
-            new RegisterModel(2000, new Date("2021-3-1")),
-            new RegisterModel(2000, new Date("2021-4-1")),
-            new RegisterModel(2000, new Date("2021-5-1")),
-            new RegisterModel(2000, new Date("2021-6-1")),
-            new RegisterModel(2000, new Date("2021-7-1")),
-            new RegisterModel(2000, new Date("2021-8-1")),
-            new RegisterModel(2000, new Date("2021-9-1")),
-            new RegisterModel(2000, new Date("2021-10-1")),
-            new RegisterModel(2000, new Date("2021-11-1")),
-            new RegisterModel(2000, new Date("2021-12-1")),
+            new RegisterModel(1200, new Date("2020-2-1")),
+            new RegisterModel(1400, new Date("2020-3-1")),
+            new RegisterModel(3300, new Date("2020-4-1")),
+            new RegisterModel(5100, new Date("2020-5-1")),
+            new RegisterModel(2500, new Date("2020-6-1")),
+            new RegisterModel(1000, new Date("2020-7-1")),
+            new RegisterModel(2500, new Date("2020-8-1")),
+            new RegisterModel(3400, new Date("2020-9-1")),
+            new RegisterModel(1500, new Date("2020-10-1")),
+            new RegisterModel(1450, new Date("2020-11-1")),
+            new RegisterModel(900, new Date("2020-12-1")),
+            new RegisterModel(2150, new Date("2021-1-5")),
+            new RegisterModel(1200, new Date("2021-2-5")),
+            new RegisterModel(1400, new Date("2021-3-5")),
+            new RegisterModel(3300, new Date("2021-4-5")),
+            new RegisterModel(5100, new Date("2021-5-5")),
+            new RegisterModel(2500, new Date("2021-6-5")),
+            new RegisterModel(1000, new Date("2021-7-5")),
+            new RegisterModel(2500, new Date("2021-8-5")),
+            new RegisterModel(3400, new Date("2021-9-5")),
+            new RegisterModel(1500, new Date("2021-10-5")),
+            new RegisterModel(1450, new Date("2021-11-5")),
+            new RegisterModel(900, new Date("2021-12-5")),
         ];
     }
 
     setExpenseData(): void {
         this.expense = [
-            new RegisterModel(2000, new Date("2020-1-1")),
-            new RegisterModel(2000, new Date("2020-2-1")),
-            new RegisterModel(2000, new Date("2020-3-1")),
-            new RegisterModel(2000, new Date("2020-4-1")),
-            new RegisterModel(2000, new Date("2020-5-1")),
-            new RegisterModel(2000, new Date("2020-6-1")),
-            new RegisterModel(2000, new Date("2020-7-1")),
-            new RegisterModel(2000, new Date("2020-8-1")),
-            new RegisterModel(2000, new Date("2020-9-1")),
-            new RegisterModel(2000, new Date("2020-10-1")),
-            new RegisterModel(2000, new Date("2020-11-1")),
-            new RegisterModel(2000, new Date("2020-12-1")),
-            new RegisterModel(2000, new Date("2021-1-1")),
-            new RegisterModel(2000, new Date("2021-2-1")),
-            new RegisterModel(2000, new Date("2021-3-1")),
-            new RegisterModel(2000, new Date("2021-4-1")),
-            new RegisterModel(2000, new Date("2021-5-1")),
-            new RegisterModel(2000, new Date("2021-6-1")),
-            new RegisterModel(2000, new Date("2021-7-1")),
-            new RegisterModel(2000, new Date("2021-8-1")),
-            new RegisterModel(2000, new Date("2021-9-1")),
-            new RegisterModel(2000, new Date("2021-10-1")),
-            new RegisterModel(2000, new Date("2021-11-1")),
-            new RegisterModel(2000, new Date("2021-12-1")),
+            new RegisterModel(3300, new Date("2020-1-1")),
+            new RegisterModel(5100, new Date("2020-2-1")),
+            new RegisterModel(2500, new Date("2020-3-1")),
+            new RegisterModel(1000, new Date("2020-4-1")),
+            new RegisterModel(2500, new Date("2020-5-1")),
+            new RegisterModel(3400, new Date("2020-6-1")),
+            new RegisterModel(1500, new Date("2020-7-1")),
+            new RegisterModel(1450, new Date("2020-8-1")),
+            new RegisterModel(3300, new Date("2020-9-1")),
+            new RegisterModel(5100, new Date("2020-10-1")),
+            new RegisterModel(2500, new Date("2020-11-1")),
+            new RegisterModel(1000, new Date("2020-12-1")),
+            new RegisterModel(2500, new Date("2021-1-1")),
+            new RegisterModel(3400, new Date("2021-2-1")),
+            new RegisterModel(1500, new Date("2021-3-1")),
+            new RegisterModel(1450, new Date("2021-4-1")),
+            new RegisterModel(3300, new Date("2021-5-1")),
+            new RegisterModel(5100, new Date("2021-6-1")),
+            new RegisterModel(2500, new Date("2021-7-1")),
+            new RegisterModel(1000, new Date("2021-8-1")),
+            new RegisterModel(2500, new Date("2021-9-1")),
+            new RegisterModel(3400, new Date("2021-10-1")),
+            new RegisterModel(1500, new Date("2021-11-1")),
+            new RegisterModel(1450, new Date("2021-12-1")),
         ];
     }
 }

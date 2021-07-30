@@ -1,4 +1,4 @@
-class RegisterModel {
+export class RegisterModel {
     value: number;
     date: Date;
 

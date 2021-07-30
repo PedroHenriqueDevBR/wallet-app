@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { ActivityModel } from 'src/app/models/activity.model';
+import { RegisterModel } from 'src/app/models/register.model';
 
 @Component({
   selector: 'app-recent-activities',
@@ -9,25 +11,40 @@ import { Chart, registerables } from 'chart.js';
 export class RecentActivitiesComponent implements OnInit {
   @ViewChild("chartID", { static: true }) element: any;
   @ViewChild("chartID", { static: true }) chartElement: ElementRef;
+  activity: ActivityModel = new ActivityModel([], [], true);
+  monthData: ActivityModel = this.activity.getDataFromMonths();
+  yearData: ActivityModel = this.activity.getDataFromYears();
+  
+  currentLabels: Array<string> = this.activity.getMonthLabels(this.monthData.income);
+  currentIncome: Array<number> = this.activity.extractValueFromRegisterValue(this.monthData.income);
+  currentExpense: Array<number> = this.activity.extractValueFromRegisterValue(this.monthData.expense);
 
   constructor() {
     Chart.register(...registerables);
     this.chartElement = this.element;
   }
 
+  ngOnInit(): void {
+    this.createChart();
+  }
+
+  changePeriod(value: number): void {
+
+  }
+
   createChart(): void {
     new Chart(this.chartElement.nativeElement, {
       type: 'line',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: this.currentLabels,
         datasets: [
           {
-            data: [1000, 1200, 1500, 4000, 3202, 2103, 3451, 345, 3219, 2985, 1102, 4654],
+            data: this.currentIncome,
             borderColor: '#00A870',
             fill: false,
           },
           {
-            data: [1200, 1000, 1450, 2000, 3202, 2003, 3751, 1045, 2219, 2985, 4102, 654],
+            data: this.currentExpense,
             borderColor: '#FF7426',
             fill: true,
             backgroundColor: 'rgba(254, 115, 37, 0.1)',
@@ -62,10 +79,6 @@ export class RecentActivitiesComponent implements OnInit {
       },
     },
     );
-  }
-
-  ngOnInit(): void {
-    this.createChart();
   }
 
 }
