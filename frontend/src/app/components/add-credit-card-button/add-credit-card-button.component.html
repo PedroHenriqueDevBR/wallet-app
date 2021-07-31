@@ -1,4 +1,35 @@
-<div id="container">
+<div id="container" (click)="changeCreateCardContainerStatus()">
     <img src="/assets/images/add.png">
     <p>Add new</p>
+
 </div>
+<div [className]="showCreateCardContainer ? 'create-card-container': 'create-card-container hide'">
+    <form [formGroup]="formCard!" (ngSubmit)="onSaveCard()">
+        <div class="header">
+            <p>Adicionar cartão</p>
+            <img src="/assets/images/add.png" (click)="changeCreateCardContainerStatus()">
+        </div>
+        <div id="input">
+            <input type="text" placeholder="Flag name" formControlName="flag">
+            <p>{{ validateFlagError }}</p>
+        </div>
+        <div id="input">
+            <input type="text" placeholder="Flag image url" formControlName="flagImageUrl">
+            <p>{{ validateFlagImageUrlError }}</p>
+        </div>
+        <div id="input">
+            <input type="text" placeholder="Value" type="number" min="0" step="1" formControlName="money">
+            <p>{{ validateValueError }}</p>
+        </div>
+        <div id="input">
+            <input type="text" placeholder="Card number" formControlName="cardNumber">
+            <p>{{ validateCardNumberError }}</p>
+        </div>
+        <div id="input">
+            <input type="text" placeholder="Expiring date" formControlName="expiringDate">
+            <p>{{ validateExpiringDateError }}</p>
+        </div>
+        <button type="submit" class="btn">Save</button>
+    </form>
+</div>
+

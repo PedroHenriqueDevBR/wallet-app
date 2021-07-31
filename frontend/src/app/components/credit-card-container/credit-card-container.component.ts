@@ -33,6 +33,17 @@ export class CreditCardContainerComponent implements OnInit {
     );
   }
 
+  saveCard(response: CardModel): void {
+    const card: CardModel = new CardModel(
+      response.flag,
+      response.flagImageUrl,
+      response.money,
+      response.cardNumber,
+      response.expiringDate,
+    );
+    this.cards.push(card);
+  }
+
   ngOnInit(): void {
     
   }

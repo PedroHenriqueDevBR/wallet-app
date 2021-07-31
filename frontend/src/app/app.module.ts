@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreditCardContainerComponent } from './components/credit-card-container/credit-card-container.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { AddCreditCardButtonComponent } from './components/add-credit-card-button/add-credit-card-button.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AddCreditCardButtonComponent } from './components/add-credit-card-butto
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
