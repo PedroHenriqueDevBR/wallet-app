@@ -23,7 +23,6 @@ export class RecentActivitiesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.createChart();
   }
 
