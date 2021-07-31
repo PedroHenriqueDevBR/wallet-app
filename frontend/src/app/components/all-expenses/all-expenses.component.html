@@ -1,0 +1,26 @@
+<div id="container">
+    <div class="header">
+        <p>All expenses</p>
+        <div class="options">
+            <div class="period-selector">
+                <select (change)="changePeriod($event.target)">
+                    <option [value]="0">This month</option>
+                    <option [value]="1">This year</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="data-container">
+        <div class="cards">
+            <app-activity-card title="Total income" value="$12,560.00" imageAsset='/assets/images/total-income.png'></app-activity-card>
+            <app-activity-card title="Total expenses" value="$6,250.00" imageAsset='/assets/images/total-expenses.png'></app-activity-card>
+            <app-activity-card title="Total balance" value="$6,310.00" imageAsset='/assets/images/total-balance.png'></app-activity-card>
+        </div>
+        <div class="chart-container">
+            <app-pie-chart></app-pie-chart>
+        </div>
+    </div>
+    <div class="tags">
+        <li *ngFor="let expense of expenses; index as i;" [style.color]="expense.color">{{expense.name}}</li>
+    </div>
+</div>

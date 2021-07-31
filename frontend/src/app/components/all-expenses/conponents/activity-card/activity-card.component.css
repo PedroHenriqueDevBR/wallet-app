@@ -1,0 +1,36 @@
+#container {
+    padding: 12px;
+    width: 192px;
+    height: fit-content;
+    background: #FFFFFF;
+    border: 1px solid #EBEDF2;
+    box-sizing: border-box;
+    border-radius: 6px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+}
+
+#container img {
+    margin-right: 12px;
+}
+
+.data p:first-child {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #7F8492;
+    margin-bottom: 8px;
+}
+
+.currency {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 21px;
+    line-height: 100%;
+    color: #07163E;
+}

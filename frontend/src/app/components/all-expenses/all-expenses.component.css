@@ -1,0 +1,95 @@
+#container {
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #EBEDF2;
+    box-sizing: border-box;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header p {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #07163E;
+}
+
+#data-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+}
+
+.period-selector {
+    background: #FFFFFF;
+    border: 1px solid #EBEDF2;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.period-selector select {
+    border: none;
+    background: #fff;
+    width: 100%;
+    height: max-content;
+    padding: 14px;
+    outline: none;
+}
+
+.period-selector select option {
+    border: none;
+    background: #fff;
+    width: 100%;
+    height: max-content;
+    padding: 14px;
+}
+
+.chart-container {
+    width: 100%;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 12px 12px;
+    background: #FFFFFF;
+    border: 1px solid #EBEDF2;
+    box-sizing: border-box;
+    border-radius: 6px;
+    flex-wrap: wrap;
+}
+
+.tags li {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18pt;
+    letter-spacing: -0.02em;
+    margin-right: 15px;
+    list-style: none;
+}
+
+.tags li::before {
+    content: "\2022";
+    /* Change the color */
+    font-weight: bold;
+    display: inline-block;
+    width: 6px;
+    margin-right: 6px;
+}
