@@ -1,5 +1,4 @@
 <div id="container">
-    <app-credit-card></app-credit-card>
-    <app-credit-card></app-credit-card>
+    <app-credit-card *ngFor="let card of cards" [card]="card"></app-credit-card>
     <app-add-credit-card-button></app-add-credit-card-button>
 </div>
