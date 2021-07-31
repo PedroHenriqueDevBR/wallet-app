@@ -8,6 +8,8 @@ import { PageActivityComponent } from './components/page-activity/page-activity.
 import { RecentActivitiesComponent } from './components/recent-activities/recent-activities.component';
 import { QuickTransferComponent } from './components/quick-transfer/quick-transfer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CreditCardContainerComponent } from './components/credit-card-container/credit-card-container.component';
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     PageActivityComponent,
     RecentActivitiesComponent,
     QuickTransferComponent,
+    CreditCardContainerComponent,
+    CreditCardComponent,
   ],
   imports: [
     BrowserModule,

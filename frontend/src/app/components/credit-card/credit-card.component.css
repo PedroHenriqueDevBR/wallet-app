@@ -1,0 +1,65 @@
+#container {
+    min-width: 300px;
+    padding: 24px;
+    margin-right: 24px;
+    background: #FFFFFF;
+    border: 1px solid #EBEDF2;
+    box-sizing: border-box;
+    border-radius: 12px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header p {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #07163E;
+    margin-bottom: 6px;
+}
+
+.money {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 100%;
+    color: #07163E;
+    margin-bottom: 34px;
+}
+
+.card-number {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-number p {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 100%;
+    color: #7F8492;
+    margin: 0px 8px 0 0;
+}
+
+.validity-date {
+    display: flex;
+    justify-content: space-between;
+}
+
+.validity-date p {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 100%;
+    color: #7F8492;
+}
