@@ -10,6 +10,7 @@ import { QuickTransferComponent } from './components/quick-transfer/quick-transf
 import { HttpClientModule } from '@angular/common/http';
 import { CreditCardContainerComponent } from './components/credit-card-container/credit-card-container.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { AddCreditCardButtonComponent } from './components/add-credit-card-button/add-credit-card-button.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
     QuickTransferComponent,
     CreditCardContainerComponent,
     CreditCardComponent,
+    AddCreditCardButtonComponent,
   ],
   imports: [
     BrowserModule,

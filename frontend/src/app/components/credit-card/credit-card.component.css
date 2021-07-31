@@ -24,6 +24,10 @@
     margin-bottom: 6px;
 }
 
+.header img {
+    width: 38px;
+}
+
 .money {
     font-family: Test Metric;
     font-style: normal;
@@ -62,4 +66,8 @@
     font-size: 14px;
     line-height: 100%;
     color: #7F8492;
+}
+
+.pointer {
+    cursor: pointer;
 }
