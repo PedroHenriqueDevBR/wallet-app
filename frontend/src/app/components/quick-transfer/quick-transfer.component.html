@@ -4,35 +4,31 @@
     </div>
 
     <div class="person-horizontal-list">
-        <div class="person-card">
+        <div class="person-card" *ngFor="let transfer of quickTransfers; index as i;" (click)="changeQuickTransfer(i)">
             <div class="avatar"></div>
-            <div class="person-data"></div>
+            <div [className]="selectedQuickTranfer == i ? 'person-data selected' : 'person-data' ">
+                <p>{{transfer}}</p>
+            </div>
         </div>
-        <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
+    </div>
+
+    <div class="transfer-container">
+        <p>Manual transfer</p>
+        <div id="transfer-input">
+            <img src="/assets/images/credit-card.png" width="20" height="20">
+            <input type="text" placeholder="Credit card">
         </div>
-        <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
-        </div>
-        <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
-        </div>
-        <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
-        </div>
-        <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
-        </div><div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
-        </div><div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-data"></div>
+        <div class="options">
+            <div class="currency-selector">
+                <div id="currency-input">
+                    <img src="/assets/images/currency.png" width="20" height="20">
+                    <input type="text" placeholder="Amount" readonly [value]="selectedCurrency">
+                </div>  
+                <select (change)="changeCurrency($event.target)">
+                    <option *ngFor="let currency of currencies; index as i;" [value]="i">{{ currency }}</option>
+                </select>
+            </div>
+            <button class="btn">Transfer Money</button>
         </div>
     </div>
 </div>

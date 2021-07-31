@@ -23,7 +23,7 @@ main {
 }
 
 .sizedbox-h-24 {
-    width: 24px;
+    margin: 0 12px;
 }
 
 #middle-data {

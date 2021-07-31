@@ -92,5 +92,6 @@
 
 .chartContainer {
     width: 100%;
-    min-height: 300px;
+    height: 275px;
+    cursor: pointer;
 }

@@ -22,25 +22,24 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 5px;
+    padding: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .person-horizontal-list::-webkit-scrollbar {
     display: none;
 }
 
-.person-horizontal-list {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
 .person-card {
     min-width: 100px;
     height: fit-content;
-    margin: 0 12px;
+    margin-right: 12px;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
 
 .avatar {
@@ -61,4 +60,128 @@
     bottom: 0;
     background: #F2F3F7;
     border-radius: 6px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+.person-data.selected {
+    background: #00A87036;
+}
+
+.person-data p {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #07163E;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.transfer-container {
+    padding: 20px 0;
+}
+
+.transfer-container p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: -0.02em;
+    color: #07163E;
+}
+
+#transfer-input {
+    width: 100%;
+    height: 44px;
+    background: #fff;
+    border: 1px solid #EBEDF2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    margin: 14px 0;
+}
+
+#transfer-input img {
+    margin: 12px;
+}
+
+#transfer-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+.options {
+    display: flex;
+}
+
+.btn {
+    min-width: 173px;
+    padding: 15px 25px;
+    background: #00A870;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    border: none;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.currency-selector {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #EBEDF2;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.currency-selector select {
+    border: none;
+    background: #fff;
+    padding: 8px;
+    outline: none;
+}
+
+.currency-selector select option {
+    border: none;
+    background: #fff;
+}
+
+#currency-input {
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+}
+
+#currency-input img {
+    margin-right: 12px;
+}
+
+#currency-input input {
+    cursor: auto;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
 }
