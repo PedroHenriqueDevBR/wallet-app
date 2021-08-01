@@ -16,6 +16,7 @@ import { AddCreditCardButtonComponent } from './components/credit-card-container
 import { AllExpensesComponent } from './components/all-expenses/all-expenses.component';
 import { ActivityCardComponent } from './components/all-expenses/conponents/activity-card/activity-card.component';
 import { PieChartComponent } from './components/all-expenses/conponents/pie-chart/pie-chart.component';
+import { LatestTransactionsComponent } from './components/latest-transactions/latest-transactions.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { PieChartComponent } from './components/all-expenses/conponents/pie-char
     AllExpensesComponent,
     ActivityCardComponent,
     PieChartComponent,
+    LatestTransactionsComponent,
   ],
   imports: [
     BrowserModule,

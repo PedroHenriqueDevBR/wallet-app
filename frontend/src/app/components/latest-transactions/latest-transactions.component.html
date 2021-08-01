@@ -1,0 +1,35 @@
+<div id="container">
+    <div class="header">
+        <p>Latest transections</p>
+        <button>
+            View all
+            <img src="/assets/images/arrow-right.png" width="16px">
+        </button>
+    </div>
+
+    <div class="transection-list">
+        <ul>
+            <li class="transection-card" *ngFor="let transection of transections">
+                <div class="benefited" >
+                    <div class="image">
+                        <img [src]="transection.logo">
+                    </div>
+                    <p>{{ transection.name }}</p>
+                </div>
+                <p>{{ transection.date.toLocaleString() }}</p>
+                <div class="meta-data" >
+                    <div class="action" [style.color]="transection.color">
+                        <div class="icon-color" [style.backgroundColor]="transection.color">
+                            <div class="child" [style.backgroundColor]="transection.color"></div>
+                        </div>
+                        <p>{{ transection.action }}</p>
+                    </div>
+                </div>
+                <div class="value" >
+                    <p>{{ transection.formatedCurrencyMoney() }} USD</p>
+                    <img src="/assets/images/menu.png" height="18">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
