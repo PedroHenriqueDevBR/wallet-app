@@ -7,7 +7,7 @@ export class Transfer {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({type: 'decimal'})
+    @Column({ type: 'decimal' })
     value: number;
 
     @Column()
@@ -18,5 +18,13 @@ export class Transfer {
 
     @ManyToOne(() => Receiver, receiver => receiver.transfers)
     receiver: Receiver;
+
+    constructor(value: number) {
+        this.value = value;
+    }
+
+    static fronObject(body: any): Transfer {
+        return new Transfer(body['value']);
+    }
 
 }

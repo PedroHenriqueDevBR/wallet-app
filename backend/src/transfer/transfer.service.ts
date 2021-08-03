@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Repository } from 'typeorm';
+import { createQueryBuilder, Repository, SelectQueryBuilder } from 'typeorm';
 import { Transfer } from './transfer.entity';
 
 @Injectable()
@@ -10,7 +10,29 @@ export class TransferService {
     private transferRepository: Repository<Transfer>,
   ) {}
 
-  async getTransfers(): Promise<Transfer[]> {
-    return this.transferRepository.find();
+  async makeTransfer(transfer: Transfer): Promise<Transfer> {
+    try {
+      return await this.transferRepository.save(transfer);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async transfers(): Promise<Transfer[]> {
+    try {
+      return await this.transferRepository.find();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async lastTransfers(quantity: number): Promise<Transfer[]> {
+    try {
+      const query: SelectQueryBuilder<Transfer> = createQueryBuilder<Transfer>('transfer').limit(quantity); 
+      return await query.getMany();
+    } catch (error) {
+      throw error;
+    }
   }
 }
