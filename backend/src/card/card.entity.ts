@@ -20,11 +20,29 @@ export class Card {
     cardNumber: string;
 
     @Column()
-    validateDate: Date;
+    validateDate: string;
 
     @ManyToOne(() => User, user => user.cards)
     user: User;
 
     @OneToMany(() => Transfer, transfer => transfer.card)
     transfers: Transfer[];
+
+    constructor(name: string, flagImage: string, balance: number, cardNumber: string, validateDate: string) {
+        this.name = name;
+        this.flagImage = flagImage;
+        this.balance = balance;
+        this.cardNumber = cardNumber;
+        this.validateDate = validateDate;
+    }
+
+    static fronObject(obj: any): Card {
+        return new Card(
+            obj['name'],
+            obj['flagImage'],
+            obj['balance'],
+            obj['cardNumber'],
+            obj['validateDate'],
+        );
+    }
 }
