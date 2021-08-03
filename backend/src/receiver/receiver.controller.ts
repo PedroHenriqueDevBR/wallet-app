@@ -10,7 +10,9 @@ export class ReceiverController {
   receiverDataIsValidToSave(body: any): boolean {
     if (
       body['name'] == undefined ||
-      body['image'] == undefined
+      body['image'] == undefined ||
+      body['category'] == undefined ||
+      body['color'] == undefined
     ) {
       return false;
     }

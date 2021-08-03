@@ -1,6 +1,5 @@
-import { Category } from "src/category/category.entity";
 import { Transfer } from "src/transfer/transfer.entity";
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Receiver {
@@ -13,19 +12,23 @@ export class Receiver {
     @Column()
     image: string;
 
+    @Column()
+    category: string;
+
+    @Column()
+    color: string;
+
     @OneToMany(() => Transfer, transfer => transfer.receiver)
     transfers: Transfer[];
 
-    @OneToOne(() => Category)
-    @JoinColumn()
-    category: Category;
-
-    constructor(name: string, image: string) {
+    constructor(name: string, image: string, category: string, color: string) {
         this.name = name;
         this.image = image;
+        this.category = category;
+        this.color = color;
     }
 
     static fronObject(body: any): Receiver {
-        return new Receiver(body['name'], body['image']);
+        return new Receiver(body['name'], body['image'], body['category'], body['color']);
     }
 }
