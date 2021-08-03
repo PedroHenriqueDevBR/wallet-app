@@ -14,4 +14,9 @@ export class User {
 
     @OneToMany(() => Card, card => card.user)
     cards: Card[];
+
+    constructor(name: string, image: string) {
+        this.name = name;
+        this.image = image;
+    }
 }

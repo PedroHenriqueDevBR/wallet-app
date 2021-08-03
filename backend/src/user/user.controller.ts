@@ -8,7 +8,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('/data')
-  getUser(): Promise<User[]> {
+  getUser(): Promise<User> {
     return this.userService.getUser();
   }
 }
