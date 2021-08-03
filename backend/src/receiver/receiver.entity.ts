@@ -19,4 +19,13 @@ export class Receiver {
     @OneToOne(() => Category)
     @JoinColumn()
     category: Category;
+
+    constructor(name: string, image: string) {
+        this.name = name;
+        this.image = image;
+    }
+
+    static fronObject(body: any): Receiver {
+        return new Receiver(body['name'], body['image']);
+    }
 }

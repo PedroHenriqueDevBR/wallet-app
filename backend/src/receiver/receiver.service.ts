@@ -10,7 +10,20 @@ export class ReceiverService {
     private receiverRepository: Repository<Receiver>,
   ) {}
 
-  async getAll(): Promise<Receiver[]> {
-    return this.receiverRepository.find();
+  async createReceiver(receiver: Receiver): Promise<Receiver> {
+    try {
+      return await this.receiverRepository.save(receiver);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  async getReceivers(): Promise<Receiver[]> {
+    try {
+      return await this.receiverRepository.find();
+    } catch (error) {
+      throw error;
+    }
   }
 }
