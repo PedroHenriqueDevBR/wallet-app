@@ -38,8 +38,16 @@ cd wallet-app/frontend
 # Install dependecies
 npm install
 
-# Run application
-ng serve # Run
+# Enter the backend folder
+cd ../backend
 
-ng serve --open # Run and open in your browser
+# Install backend dependecies
+npm install
+
+# Run backend
+npm run start
+
+# Run application
+ng serve --open 
+
 ```
