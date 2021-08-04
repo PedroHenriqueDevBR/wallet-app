@@ -76,9 +76,17 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 100%;
-    letter-spacing: -0.02em;
     color: #07163E;
     margin-left: 8px;
+}
+
+p.date {
+    font-family: Test Metric;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 100%;
+    color: #7F8492;
 }
 
 .meta-data {
@@ -92,10 +100,9 @@
 .meta-data p:first-child {
     font-family: Test Metric;
     font-style: normal;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 16px;
     line-height: 100%;
-    letter-spacing: -0.01em;
     color: #7F8492;
     margin-right: 50px;
 }

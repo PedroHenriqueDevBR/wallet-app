@@ -17,6 +17,7 @@
     line-height: 100%;
     letter-spacing: -0.03em;
     color: #07163E;
+    font-family: atami;
 }
 
 .subtitle {
@@ -27,6 +28,7 @@
     text-transform: uppercase;
     letter-spacing: 0.02em;
     color: #7F8492;
+    font-family: 'test metric';
 }
 
 #search-container {

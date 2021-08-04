@@ -140,6 +140,7 @@
     border: none;
     margin-left: 16px;
     cursor: pointer;
+    font-family: poppins;
 }
 
 .currency-selector {
