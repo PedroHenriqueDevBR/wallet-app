@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CardModel } from 'src/app/models/card.model';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'app-credit-card',
@@ -8,12 +8,24 @@ import { CardModel } from 'src/app/models/card.model';
 })
 export class CreditCardComponent implements OnInit {
 
-  @Input() card: CardModel | undefined;
+  @Input() card: Card | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  formatedCurrencyMoney(value: number): string {
+    return (value).toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+}
+
+formatedCardNumber(cardNumber: string): string {
+    const cardNumberParts: string[] = cardNumber.split(' ');
+    return `${cardNumberParts[0]} **** **** ${cardNumberParts[cardNumberParts.length -1 ]}`;
+}
 
   copyMessage(): void {
     const inputAux = document.createElement('input');

@@ -5,9 +5,9 @@
 
     <div class="person-horizontal-list">
         <div class="person-card" *ngFor="let transfer of quickTransfers; index as i;" (click)="changeQuickTransfer(i)">
-            <div class="avatar"></div>
+            <div class="avatar" style="background: url('{{ transfer.image }}'); background-size: cover; background-position: center;"></div>
             <div [className]="selectedQuickTranfer == i ? 'person-data selected' : 'person-data' ">
-                <p>{{transfer}}</p>
+                <p>{{transfer.name}}</p>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 <div id="currency-input">
                     <img src="/assets/images/currency.png" width="20" height="20">
                     <input type="text" placeholder="Amount" readonly [value]="selectedCurrency">
-                </div>  
+                </div>
                 <select (change)="changeCurrency($event.target)">
                     <option *ngFor="let currency of currencies; index as i;" [value]="i">{{ currency }}</option>
                 </select>

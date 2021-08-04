@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CardModel } from 'src/app/models/card.model';
+import { CardService } from 'src/app/services/card.service';
+import { Card } from './models/card.model';
 
 @Component({
   selector: 'app-credit-card-container',
@@ -8,22 +9,34 @@ import { CardModel } from 'src/app/models/card.model';
 })
 export class CreditCardContainerComponent implements OnInit {
 
-  cards: Array<CardModel> = [];
+  cards: Array<Card> = [];
 
-  constructor() {
+  constructor(private service: CardService) {
     this.setCards();
+  }
+
+  ngOnInit(): void {
+    this.getCards();
+  }
+
+  getCards(): void {
+    this.service.getCards().subscribe(
+      (data: Card[]) => {
+        this.cards = data;
+      }
+    );
   }
 
   setCards(): void {
     this.cards.push(
-      new CardModel(
+      new Card(
         'Visa',
         'https://logodownload.org/wp-content/uploads/2016/10/visa-logo-1.png',
         95400,
         '0077 1578 4851 3814',
         '04/24',
       ),
-      new CardModel(
+      new Card(
         'MasterCard',
         'https://marcas-logos.net/wp-content/uploads/2020/03/Mastercard-Logo-1-600x375.png',
         21848,
@@ -33,19 +46,15 @@ export class CreditCardContainerComponent implements OnInit {
     );
   }
 
-  saveCard(response: CardModel): void {
-    const card: CardModel = new CardModel(
-      response.flag,
-      response.flagImageUrl,
-      response.money,
+  saveCard(response: Card): void {
+    const card: Card = new Card(
+      response.name,
+      response.flagImage,
+      response.balance,
       response.cardNumber,
-      response.expiringDate,
+      response.validateDate,
     );
     this.cards.push(card);
-  }
-
-  ngOnInit(): void {
-    
   }
 
 }

@@ -12,6 +12,7 @@
 main {
     overflow-y: auto;
     padding: 8px 24px 0 0;
+    width: 100%;
 }
 
 .sizedbox-34 {

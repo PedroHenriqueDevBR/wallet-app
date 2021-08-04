@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { CardModel } from 'src/app/models/card.model';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'app-add-credit-card-button',
@@ -19,27 +19,27 @@ export class AddCreditCardButtonComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.createForm(new CardModel('', '', 0, '', ''));
+    this.createForm(new Card('', '', 0, '', ''));
   }
 
   changeCreateCardContainerStatus(): void {
     this.showCreateCardContainer = !this.showCreateCardContainer;
   }
 
-  createForm(card: CardModel): void {
+  createForm(card: Card): void {
     this.formCard = new FormGroup({
-      flag: new FormControl(card.flag),
-      flagImageUrl: new FormControl(card.flagImageUrl),
-      money: new FormControl(card.money),
+      flag: new FormControl(card.name),
+      flagImageUrl: new FormControl(card.flagImage),
+      money: new FormControl(card.balance),
       cardNumber: new FormControl(card.cardNumber),
-      expiringDate: new FormControl(card.expiringDate),
+      expiringDate: new FormControl(card.validateDate),
     });
   }
 
   onSaveCard(): void {
     if (this.formIsValid()) {
       this.showCreateCardContainer = false;
-      const card: CardModel = this.formCard?.value;
+      const card: Card = this.formCard?.value;
     }
   }
 

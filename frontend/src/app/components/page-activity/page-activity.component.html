@@ -1,7 +1,7 @@
 <div id="container">
     <div id="info">
         <h1 class="title">
-            <span class="subtitle">Good morning, Floyd</span><br>
+            <span class="subtitle">Good morning, {{user != null ? user.name.split(' ')[0] : ''}}</span><br>
             Dashboard
         </h1>
 
@@ -15,8 +15,8 @@
         <div class="sizebox"></div>
         <img src="/assets/images/notification.png" width="24" height="24">
         <div class="user">
-            <div class="avatar"></div>
-            <span class="name">Floyd Miles</span>
+            <div class="avatar" style="background: url('{{ user!.image }}'); background-size: cover; background-position: center;"></div>
+            <span class="name">{{ user != null ? user.name : '' }}</span>
         </div>
     </div>
 </div>
